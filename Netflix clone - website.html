@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix India</title>
+    <style>
+        
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            scroll-behavior: smooth;
+        }
+
+        .main {
+            background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .main .box {
+            height: 100vh;
+            width: 100%;
+            opacity: 0.69;
+            background-color: black;
+            top: 0;
+            position: absolute;
+        }
+
+        nav {
+            max-width: 90vw;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            position: relative;
+            z-index: 10;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav img {
+            color: red;
+            width: 130px;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav button {
+            position: relative;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .hero {
+            font-family: 'Poppins', "Martel Sans", sans-serif;
+            height: calc(100% - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            position: relative;
+            gap: 23px;
+            padding: 0 30px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero > :nth-child(1) {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .hero > :nth-child(2) {
+            font-weight: 400;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .hero > :nth-child(3) {
+            font-weight: 400;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .separation {
+            position: relative;
+            height: 7px;
+            background-color: rgb(40, 40, 40);
+            z-index: 20;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-weight: 400;
+            background-color: rgba(23, 23, 23, 0.3);
+            color: white;
+            border-radius: 4px;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-red {
+            height: 49px;
+            background-color: red;
+            color: white;
+            padding: 3px 24px;
+            font-size: 20px;
+            border-radius: 4px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .btn-red:hover {
+            background-color: #e50914;
+            transform: scale(1.02);
+        }
+
+        .btn-red-sm {
+            background-color: red;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .hero-buttons input {
+            height: 50px;
+            padding: 10px 15px;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid rgba(246, 238, 238, 0.5);
+            background-color: rgba(23, 23, 23, 0.7);
+            flex-grow: 1;
+            transition: all 0.3s ease;
+        }
+
+        .hero-buttons input:focus {
+            outline: none;
+            border-color: white;
+            background-color: rgba(23, 23, 23, 0.9);
+        }
+
+        .first {
+            display: flex;
+            justify-content: center;
+            max-width: 90vw;
+            margin: auto;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        .secImg {
+            position: relative;
+        }
+
+        .secImg img {
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .secImg video {
+            position: absolute;
+            top: 20%;
+            right: 12%;
+            width: 73%;
+            max-width: 480px;
+        }
+
+        .third img {
+            width: 100%;
+            max-width: 730px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .third video {
+            position: absolute;
+            top: 10%;
+            right: 18%;
+            width: 64%;
+            max-width: 470px;
+        }
+
+        section.first > div {
+            display: flex;
+            flex-direction: column;
+            padding: 34px 0;
+            gap: 20px;
+        }
+
+        section.first > div :nth-child(1) {
+            font-size: 48px;
+            font-weight: bolder;
+        }
+
+        section.first > div :nth-child(2) {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .second {
+            flex-direction: row-reverse;
+        }
+
+        .feq h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .feq {
+            background: black;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .feqbox {
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2d2d2d;
+            padding: 24px;
+            max-width: 800px;
+            margin: 10px auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feqbox:hover {
+            background-color: #414141;
+        }
+
+        .feqbox::after {
+            content: '+';
+            font-size: 30px;
+        }
+
+        .feqbox.active::after {
+            content: '×';
+        }
+
+        footer {
+            color: white;
+            max-width: 90vw;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        footer .questions {
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .footer a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .last {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .last div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .footer-copy {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .footer-copy a {
+            color: grey;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 950px) {
+            .hero > :nth-child(1) {
+                font-size: 32px;
+            }
+
+            .hero > :nth-child(2),
+            .hero > :nth-child(3) {
+                font-size: 18px;
+            }
+
+            section.first > div :nth-child(1) {
+                font-size: 32px;
+                text-align: center;
+            }
+            
+            section.first > div :nth-child(2) {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .first {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .second {
+                flex-direction: column;
+            }
+
+            .secImg {
+                margin-top: 30px;
+            }
+
+            .feq h2 {
+                font-size: 32px;
+            }
+
+            .feqbox {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons input {
+                width: 100%;
+            }
+
+            .btn-red {
+                width: 150px;
+                margin-top: 10px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            nav {
+                height: 70px;
+            }
+
+            nav img {
+                width: 100px;
+            }
+
+            .btn {
+                padding: 5px 10px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 0 20px;
+            }
+
+            .secImg video {
+                top: 15%;
+                right: 15%;
+                width: 70%;
+            }
+
+            .third video {
+                top: 8%;
+                right: 15%;
+                width: 70%;
+            }
+        }
+
+        /* Animation for FAQ items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feqbox {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .feqbox:nth-child(1) { animation-delay: 0.1s; }
+        .feqbox:nth-child(2) { animation-delay: 0.2s; }
+        .feqbox:nth-child(3) { animation-delay: 0.3s; }
+        .feqbox:nth-child(4) { animation-delay: 0.4s; }
+        .feqbox:nth-child(5) { animation-delay: 0.5s; }
+        .feqbox:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Pulse animation for Get Started button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-red.pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <nav>
+            <span><img width="56" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix Logo"></span>
+            <div>
+                <button class="btn">English</button>
+                <button class="btn btn-red-sm">Sign In</button>
+            </div>
+        </nav>
+        <div class="box"></div>
+        <div class="hero">
+            <span>Unlimited movies, TV shows and more</span>
+            <span>Watch anywhere. Cancel anytime.</span>
+            <span>Ready to watch? Enter your email to create or restart your membership.</span>
+            <div class="hero-buttons">
+                <input type="text" placeholder="Email Address">
+                <button class="btn btn-red pulse">Get Started &gt;</button>
+            </div>
+        </div>
+        <div class="separation"></div>
+    </div>
+
+    <section class="first">
+        <div>
+            <span>Enjoy on your TV</span>
+            <span>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</span>
+        </div>
+        <div class="secImg">
+            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png" alt="">
+            <video src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-in-0819.m4v" autoplay loop muted></video>
+        </div>
+    </section>
+
+    <div class="separation"></div>
+
+    <section class="first second">
+        <div class="secImg">
+            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg" alt="">
+        </div>
+        <div>
+            <span>Download your shows to watch offline</span>
+            <span>Save your favourites easily and always have something to watch.</span>
+        </div>
+    </section>
+    
+    <div class="separation"></div>
+    
+    <section class="first third">
+        <div>
+            <span>Watch everywhere</span>
+            <span>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</span>
+        </div>
+        <div class="secImg">
+            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-in.png" alt="">
+            <video src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-in.m4v" autoplay loop muted></video>
+        </div>
+    </section>
+    
+    <div class="separation"></div>
+
+    <section class="first fourth">
+        <div class="secImg">
+            <img src="https://occ-0-2087-2164.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABVr8nYuAg0xDpXDv0VI9HUoH7r2aGp4TKRCsKNQrMwxzTtr-NlwOHeS8bCI2oeZddmu3nMYr3j9MjYhHyjBASb1FaOGYZNYvPBCL.png?r=54d" alt="">
+        </div>
+        <div>
+            <span>Create profiles for kids</span>
+            <span>Send children on adventures with their favourite characters in a space made just for them—free with your membership.</span>
+        </div>
+    </section>
+    
+    <div class="separation"></div>
+
+    <section class="feq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="feqbox">
+            <span>What is Netflix?</span>
+        </div>
+        <div class="feqbox">
+            <span>How much does Netflix cost?</span>
+        </div>
+        <div class="feqbox">
+            <span>Where can I watch?</span>
+        </div>
+        <div class="feqbox">
+            <span>How do I cancel?</span>
+        </div>
+        <div class="feqbox">
+            <span>What can I watch on Netflix?</span>
+        </div>
+        <div class="feqbox">
+            <span>Is Netflix good for kids?</span>
+        </div>
+        <div class="last">
+            <div>
+                Ready to watch? Enter your email to create or restart your membership.
+            </div>
+            <div class="hero-buttons">
+                <input type="text" placeholder="Email Address">
+                <button class="btn btn-red">Get Started &gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="separation"></div>
+
+    <footer>
+        <div class="questions">
+            Questions? Call <a href="tel:0008009191694">000-800-919-1694</a>
+        </div>
+        <div class="footer">
+            <div class="footer-item">
+                <a href="faq">FAQ</a>
+                <a href="https://ir.netflix.net/ir-overview/profile/default.aspx">Investor Relations</a>
+                <a href="https://help.netflix.com/legal/privacy">Privacy</a>
+                <a href="https://fast.com/">Speed Test</a>
+            </div>
+            <div class="footer-item">
+                <a href="https://help.netflix.com/">Help Centre</a>
+                <a href="https://jobs.netflix.com/">Jobs</a>
+                <a href="https://www.netflix.com/in/#">Cookie Preferences</a>
+                <a href="https://help.netflix.com/legal/notices">Legal Notices</a>
+            </div>
+            <div class="footer-item">
+                <a href="https://www.netflix.com/youraccount">Account</a>
+                <a href="https://devices.netflix.com/en/">Ways to Watch</a>
+                <a href="https://help.netflix.com/legal/corpinfo">Corporate Information</a>
+                <a href="https://www.netflix.com/in/browse/genre/839338">Only on Netflix</a>
+            </div>
+            <div class="footer-item">
+                <a href="https://media.netflix.com/">Media Centre</a>
+                <a href="https://help.netflix.com/legal/termsofuse">Terms of Use</a>
+                <a href="https://help.netflix.com/en/contactus">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <a href="./copyright.html">Copyright &#169; 2025 All Rights Reserved</a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.feqbox').forEach(box => {
+            box.addEventListener('click', () => {
+                box.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('.first');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
